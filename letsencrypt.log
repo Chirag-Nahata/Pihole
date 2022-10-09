@@ -1,0 +1,42 @@
+2022-10-09 11:49:41,790:DEBUG:certbot._internal.main:certbot version: 1.29.0
+2022-10-09 11:49:41,790:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2022-10-09 11:49:41,790:DEBUG:certbot._internal.main:Arguments: []
+2022-10-09 11:49:41,790:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2022-10-09 11:49:41,806:DEBUG:certbot._internal.log:Root logging level set at 30
+2022-10-09 11:49:41,808:DEBUG:certbot._internal.plugins.selection:Requested authenticator None and installer None
+2022-10-09 11:49:41,808:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2022-10-09 11:50:01,293:DEBUG:certbot._internal.main:certbot version: 1.29.0
+2022-10-09 11:50:01,293:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2022-10-09 11:50:01,293:DEBUG:certbot._internal.main:Arguments: []
+2022-10-09 11:50:01,294:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2022-10-09 11:50:01,314:DEBUG:certbot._internal.log:Root logging level set at 30
+2022-10-09 11:50:01,315:DEBUG:certbot._internal.plugins.selection:Requested authenticator None and installer None
+2022-10-09 11:50:01,315:DEBUG:certbot._internal.plugins.selection:Multiple candidate plugins: * standalone
+Description: Spin up a temporary webserver
+Interfaces: Authenticator, Plugin
+Entry point: standalone = certbot._internal.plugins.standalone:Authenticator
+Initialized: <certbot._internal.plugins.standalone.Authenticator object at 0xffffaae33c40>
+Prep: True
+
+* webroot
+Description: Place files in webroot directory
+Interfaces: Authenticator, Plugin
+Entry point: webroot = certbot._internal.plugins.webroot:Authenticator
+Initialized: <certbot._internal.plugins.webroot.Authenticator object at 0xffffaae33a00>
+Prep: True
+2022-10-09 11:50:14,212:DEBUG:certbot._internal.log:Exiting abnormally:
+Traceback (most recent call last):
+  File "/usr/bin/certbot", line 33, in <module>
+    sys.exit(load_entry_point('certbot==1.29.0', 'console_scripts', 'certbot')())
+  File "/usr/lib/python3/dist-packages/certbot/main.py", line 19, in main
+    return internal_main.main(cli_args)
+  File "/usr/lib/python3/dist-packages/certbot/_internal/main.py", line 1744, in main
+    return config.func(config, plugins)
+  File "/usr/lib/python3/dist-packages/certbot/_internal/main.py", line 1572, in certonly
+    installer, auth = plug_sel.choose_configurator_plugins(config, plugins, "certonly")
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/selection.py", line 257, in choose_configurator_plugins
+    diagnose_configurator_problem("authenticator", req_auth, plugins)
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/selection.py", line 377, in diagnose_configurator_problem
+    raise errors.PluginSelectionError(msg)
+certbot.errors.PluginSelectionError: authenticator could not be determined or is not installed
+2022-10-09 11:50:14,213:ERROR:certbot._internal.log:authenticator could not be determined or is not installed
